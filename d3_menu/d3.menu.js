@@ -10,21 +10,62 @@
         //public
         let target = null, //用jquery选中的target
             icons = null,
-            bind_event = 'mouseover'
+            bind_event = 'mouseover',
+            position = {
+                horizontal: 'left_in', //'left_out','left_in','middle','right_in','right_out'
+                vertical: 'top_in' //'top_out','top_in','middle','bottom_in','bottom_out'
+            }
 
         //private
         let _key = Math.ceil(Math.random() * 1000000)
+
+        let _width = function(ele) {
+            let attr_width = +d3.select(ele).attr('width')
+            let style_width = $(ele).width()
+            return style_width == 0 ? attr_width : style_width
+        }
+        let _height = function(ele) {
+            let attr_height = +d3.select(ele).attr('height')
+            let style_height = $(ele).height()
+            return style_height == 0 ? attr_height : style_height
+        }
 
         //renderer
         function menu() {
             let mouseover = target.on(bind_event)
             target.on(bind_event, function(d, i) {
+                let target_ele = this
                 if (mouseover != undefined)
                     mouseover(d, i)
-                let [left, top] = [$(this).offset().left, $(this).offset().top]
+                let [left, top] = [$(target_ele).offset().left, $(target_ele).offset().top]
+
                 d3.selectAll('.group' + _key)
-                    .style('top', top + 'px')
-                    .style('left', left + 'px')
+                    .style('left', function() {
+                        if (position.horizontal == 'left_out')
+                            left -= _width(this)
+                        else if (position.horizontal == 'left_in') {
+
+                        } else if (position.horizontal == 'middle')
+                            left += _width(target_ele) / 2 - _width(this) / 2
+                        else if (position.horizontal == 'right_in')
+                            left += _width(target_ele) - _width(this)
+                        else if (position.horizontal == 'right_out')
+                            left += _width(target_ele)
+                        return left + 'px'
+                    })
+                    .style('top', function() {
+                        if (position.vertical == 'top_out')
+                            top -= _width(this)
+                        else if (position.vertical == 'top_in') {
+
+                        } else if (position.vertical == 'middle')
+                            top += _width(target_ele) / 2 - _width(this) / 2
+                        else if (position.vertical == 'bottom_in')
+                            top += _width(target_ele) - _width(this)
+                        else if (position.vertical == 'bottom_out')
+                            top += _width(target_ele)
+                        return top + 'px'
+                    })
                 d3.selectAll('.entry.group' + _key).style('display', 'inline')
             })
 
@@ -32,17 +73,13 @@
             target.on('mouseout', function(d, i) {
                 if (mouseover != undefined)
                     mouseout(d, i)
-                let [left, top] = [$(this).offset().left, $(this).offset().top]
-                d3.selectAll('.group' + _key)
-                    .style('top', top + 'px')
-                    .style('left', left + 'px')
                 d3.selectAll('.entry.group' + _key).style('display', 'none')
             })
 
             d3.select('body').append('div')
                 .attr('class', 'd3_menu_bar entry ' + 'group' + _key)
                 .on('mouseover', function() {
-                    d3.select(this).style('display', 'inline')
+                    d3.select(this).style('display', 'none')
                     d3.selectAll('.list.group' + _key).style('display', 'inline')
                 })
                 .append('i')
@@ -94,6 +131,18 @@
             bind_event = value
             return menu
         }
+        menu.position = function(value) {
+            if (!arguments.length) return position
+            if (typeof(value) != 'object') {
+                console.warn('invalid value for position', value)
+                return;
+            }
+            if (typeof(value.horizontal) == 'string')
+                position.horizontal = value.horizontal
+            if (typeof(value.vertical) == 'string')
+                position.vertical = value.vertical
+            return menu;
+        };
         return menu
     }
 })()

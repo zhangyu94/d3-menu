@@ -32,7 +32,7 @@ function main()
 		        }, ]
 
     //$(rect.node()).d3_menu();
-    var menu = d3.menu().icons(icons).target(rect).bind_event('click')
+    var menu = d3.menu().icons(icons).target(rect)/*.bind_event('click')*///.position({horizontal:'middle',vertical:'middle'})
     rect.call(menu)
 	
 }
