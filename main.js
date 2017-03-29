@@ -1,28 +1,29 @@
 function main()
 {
-	var width = 200;
-    var height = 200;
+	let width = 200;
+    let height = 200;
 
-    var svg = d3.select("body").selectAll("svg")
+    let svg = d3.select("body").selectAll("svg")
         .data([null])
         .enter().append("svg")
         .attr("width", width)
         .attr("height", height)
         .style('position', 'absolute')
 
-    var rect = svg.append('rect')
+    let rect = svg.append('rect')
         .attr('id', 'Myrect')
         .attr('width', 50)
         .attr('height', 50)
         .attr('opacity', 0.1)
         .style('transform', 'translate(60px,30px)')
 
-    var icons = [{
+    let icons = [{
 		            icon: 'fa-arrows-h',
 		            title: 'Horizontal',
 		            click: function(){console.log('h')}
 		        }, {
-		            icon: 'fa-arrows-v',
+                    text: '2',
+		            //icon: 'fa-arrows-v',
 		            title: 'Vertical',
 		            click: function(){console.log('v')}
 		        }, {
@@ -32,7 +33,7 @@ function main()
 		        }, ]
 
     //$(rect.node()).d3_menu();
-    var menu = d3.menu().icons(icons).target(rect)/*.bind_event('click')*///.position({horizontal:'middle',vertical:'middle'})
+    let menu = d3.menu().icons(icons).target(rect)/*.bind_event('click')*///.position({horizontal:'middle',vertical:'middle'})
     rect.call(menu)
 	
 }
