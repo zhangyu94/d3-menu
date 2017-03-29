@@ -1,0 +1,9 @@
+.d3_menu_bar {
+    background: #6d6c6c;
+    font-size: 10pt;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+    color: white;
+    position: absolute;
+    display: none;
+}
