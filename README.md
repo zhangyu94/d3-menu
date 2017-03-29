@@ -31,17 +31,17 @@ let rect = svg.append('rect')
         .style('transform', 'translate(60px,30px)')
 
 let icons = [{
-    icon: 'fa-arrows-h',
-		title: 'Horizontal',
-		click: function(){console.log('h')}
+    	icon: 'fa-arrows-h',
+	title: 'Horizontal',
+	click: function(){console.log('h')}
 }, {
-    text: '2',
-		title: 'Vertical',
-		click: function(){console.log('v')}
+    	text: '2',
+	title: 'Vertical',
+	click: function(){console.log('v')}
 }, {
-		icon: 'fa-sort-amount-desc',
-		title: 'Rank',
-		click: function(){console.log('r')}
+	icon: 'fa-sort-amount-desc',
+	title: 'Rank',
+	click: function(){console.log('r')}
 }]
 
 let menu = d3.menu().icons(icons).target(rect)
