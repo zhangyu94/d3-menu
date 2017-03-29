@@ -6,7 +6,15 @@ The plugin is implemented as a closure that support method chaining.
 
 ## Installing
 
-Dependency: D3-menu requires D3 3.x version & jquery 3.x version & bootstrap 3.x version & font-awesome 4.x verison as dependency
+Dependency: D3-menu requires 
+
+D3 3.x version & 
+
+jquery 3.x version & 
+
+bootstrap 3.x version & 
+
+font-awesome 4.x verison as dependency
 
 Installing: All the content of d3-menu plugin is in the folder libs/d3_menu, including d3.menu.js and d3.menu.css
 
