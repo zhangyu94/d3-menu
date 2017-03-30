@@ -1,7 +1,7 @@
 function main()
 {
-	let width = 200;
-    let height = 200;
+	let width = 200
+    let height = 200
 
     let svg = d3.select("body").selectAll("svg")
         .data([null])
@@ -30,7 +30,7 @@ function main()
 		            icon: 'fa-sort-amount-desc',
 		            title: 'Rank',
 		            click: function(){console.log('r')}
-		        }, ]
+		        }]
 
     //$(rect.node()).d3_menu();
     let menu = d3.menu().icons(icons).target(rect)/*.bind_event('click')*///.position({horizontal:'middle',vertical:'middle'})
