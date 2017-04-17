@@ -99,6 +99,7 @@
                 .attr('class', d => 'fa fa-fw ' + d.icon)
                 .attr('title', d => d.title)
                 .on('click', d => d.click())
+                .text(d => d.text)
 
             return menu
         }
