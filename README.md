@@ -1,6 +1,6 @@
 # d3-menu
 
-A reusable menu component. First, bind the menu to an HTML element. After that, when hover the element, the a button representing the menu will be displayed. When user hover on the button, the menu would be displayed.
+A reusable menu component. First, bind the menu to an HTML element. After that, when hover the element, a button representing the menu will be displayed. When user hover on the button, the menu would be displayed.
 
 The plugin is implemented as a closure that support method chaining.
 
